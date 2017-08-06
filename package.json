@@ -1,0 +1,46 @@
+{
+  "name": "colby-wp-react-collapsible",
+  "version": "1.0.2",
+  "description": "A collapsible React component and WordPress shortcode built with react-collapsible.",
+  "main": "src/",
+  "scripts": {
+    "build": "webpack -p",
+    "build-dev": "webpack",
+    "build-all": "npm run build && npm run build-dev"
+  },
+  "author": "John Watkins",
+  "keywords": ["react", "wordpress"],
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-webpack": "^1.0.0",
+    "css-loader": "^0.28.4",
+    "eslint-config-johnwatkins0": "^1.0.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.2",
+    "postcss-loader": "^2.0.5",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.0"
+  },
+  "browserslist": ["> 1%", "last 2 versions", "IE 11"],
+  "eslintConfig": {
+    "extends": ["johnwatkins0"]
+  },
+  "eslintIgnore": ["dist/*.js", "postcss.config.js"],
+  "dependencies": {
+    "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
+    "colby-scss": "^1.0.8",
+    "colby-wp-svg": "^1.1.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1"
+  },
+  "babel": {
+    "presets": ["es2015", "react"]
+  }
+}

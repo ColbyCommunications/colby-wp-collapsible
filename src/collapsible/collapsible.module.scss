@@ -1,0 +1,49 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import '~colby-scss/variables';
+
+.trigger {
+  width: 100%;
+
+  button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: .891rem;
+    padding: .5rem .75rem;
+    border: none;
+    border-radius: 2px;
+    color: $white;
+    border: 1px solid $gray-100;
+    background-color: rgba($blue, .8);
+    transition: background-color .1s;
+    cursor: pointer;
+    box-shadow: 0 0 1px 1px $white;
+
+    &:hover {
+      background-color: $blue;
+    }
+
+    .open & {
+      background-color: $blue;
+    }
+  }
+
+  svg {
+    color: white;
+    height: 1.5rem;
+    width: 1.5rem;
+    transition: transform .2s;
+
+    .open & {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.contentInner {
+  padding-top: .5rem;
+  padding-bottom: .75rem;
+}
