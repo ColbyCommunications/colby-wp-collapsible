@@ -1,6 +1,6 @@
 {
   "name": "colby-wp-react-collapsible",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A collapsible React component and WordPress shortcode built with react-collapsible.",
   "main": "src/",
   "scripts": {
