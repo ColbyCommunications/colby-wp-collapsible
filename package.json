@@ -1,6 +1,6 @@
 {
   "name": "colby-wp-react-collapsible",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A collapsible React component and WordPress shortcode built with react-collapsible.",
   "main": "src/",
   "scripts": {
@@ -9,7 +9,10 @@
     "build-all": "npm run build && npm run build-dev"
   },
   "author": "John Watkins",
-  "keywords": ["react", "wordpress"],
+  "keywords": [
+    "react",
+    "wordpress"
+  ],
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -28,11 +31,20 @@
     "style-loader": "^0.17.0",
     "webpack": "^2.5.0"
   },
-  "browserslist": ["> 1%", "last 2 versions", "IE 11"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 11"
+  ],
   "eslintConfig": {
-    "extends": ["johnwatkins0"]
+    "extends": [
+      "johnwatkins0"
+    ]
   },
-  "eslintIgnore": ["dist/*.js", "postcss.config.js"],
+  "eslintIgnore": [
+    "dist/*.js",
+    "postcss.config.js"
+  ],
   "dependencies": {
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
     "colby-scss": "^1.0.8",
@@ -41,6 +53,9 @@
     "react": "^15.6.1"
   },
   "babel": {
-    "presets": ["es2015", "react"]
+    "presets": [
+      "es2015",
+      "react"
+    ]
   }
 }
