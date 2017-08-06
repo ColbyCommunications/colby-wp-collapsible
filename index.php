@@ -1,4 +1,9 @@
 <?php
+/**
+ * Plugin Name: Colby Collapsible
+ * Description: A [collapsible] shortcode to generate expandable content sections.
+ * Author: John Watkins, Colby Communications
+ */
 
 foreach ( [ 'tboot_accordion', 'tboot_accordion_section' ] as $shortcode ) {
 	remove_shortcode( $shortcode );
@@ -52,3 +57,27 @@ function register_collapsible_container() {
 
 add_action( 'init', 'register_collapsible_shortcode' );
 add_action( 'init', 'register_collapsible_container' );
+
+
+add_action( 'wp_enqueue_scripts', function() {
+	$min = defined( 'PROD' ) && PROD === true ? '.min' : '';
+
+	wp_register_script('collapsible', "https://unpkg.com/colby-wp-react-collapsible@latest/dist/colby-wp-react-collapsible$min.js", ['react', 'react-dom'], '', true);
+}, 10, 1 );
+
+add_action( 'wp_enqueue_scripts', function() {
+	$min = defined( 'PROD' ) && PROD === true ? '.min' : '';
+
+	wp_register_style('collapsible', "https://unpkg.com/colby-wp-react-collapsible@latest/dist/colby-wp-react-collapsible$min.css", [], '');
+}, 10, 1 );
+
+function maybe_enqueue_collapsible() {
+	global $post;
+
+	if ( has_shortcode( $post->post_content, 'tboot_accordion_section')
+			|| has_shortcode( $post->post_content, 'collapsible' ) ) {
+		wp_enqueue_script( 'collapsible' );
+		wp_enqueue_style( 'collapsible' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'maybe_enqueue_collapsible' );
