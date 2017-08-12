@@ -4,6 +4,7 @@
   "description": "A WordPress shortcode for collapsible HTML drawers.",
   "main": "src/",
   "scripts": {
+    "watch": "webpack --watch",
     "build": "webpack -p",
     "build-dev": "webpack",
     "build-all": "npm run build && npm run build-dev"

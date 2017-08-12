@@ -108,7 +108,7 @@ var Collapsible = function () {
     _classCallCheck(this, Collapsible);
 
     this.props = props;
-    this.open = props.open;
+    this.open = !props.open;
   }
 
   _createClass(Collapsible, [{
@@ -138,6 +138,7 @@ var Collapsible = function () {
     value: function run() {
       this.contentHeight = this.props.content.clientHeight;
 
+      this.handleClick();
       this.props.trigger.addEventListener('click', this.handleClick.bind(this));
     }
   }]);

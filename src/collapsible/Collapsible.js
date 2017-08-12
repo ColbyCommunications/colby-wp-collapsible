@@ -1,7 +1,7 @@
 class Collapsible {
   constructor(props) {
     this.props = props;
-    this.open = props.open;
+    this.open = !props.open;
   }
 
   shouldRun() {
@@ -33,6 +33,7 @@ class Collapsible {
   run() {
     this.contentHeight = this.props.content.clientHeight;
 
+    this.handleClick();
     this.props.trigger.addEventListener('click', this.handleClick.bind(this));
   }
 }

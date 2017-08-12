@@ -17,7 +17,7 @@ function render_collapsible( $atts, $content ) {
 		$atts['trigger'] = $atts['title'];
 	}
 
-	if ( ! $atts['trigger'] ) {
+	if ( ! $content || ! $atts['trigger'] ) {
 		return '';
 	}
 
