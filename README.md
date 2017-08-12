@@ -1,6 +1,6 @@
 # colby-collapsible
 
-A collapsible React component and WordPress shortcode built with react-collapsible.
+A WordPress shortcode for collapsible HTML drawers.
 
 ## Usage
 // To-do

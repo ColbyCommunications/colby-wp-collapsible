@@ -1,12 +1,31 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
+import webpack from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+
 import packageJson from './package.json';
 
 const main = () => {
-  const min = process.argv.includes('-p') ? '.min' : '';
-
-  const entry = './src/index.build.js';
+  const PROD = process.argv.includes('-p');
+  const watching = process.argv.includes('--watch');
+  const min = PROD ? '.min' : '';
+  const entry = ['./src/index.build.js', './src/collapsible.scss'];
   const filename = `${packageJson.name}${min}.js`;
+  const plugins = [new ExtractTextPlugin(`${packageJson.name}${min}.css`)];
+
+  if (PROD) {
+    plugins.push(
+      new webpack.optimize.UglifyJsPlugin({
+        output: {
+          comments: false,
+        },
+      })
+    );
+  }
+
+  if (!watching) {
+    plugins.push(new BundleAnalyzerPlugin({ analyzerMode: 'static' }));
+  }
 
   return {
     entry,

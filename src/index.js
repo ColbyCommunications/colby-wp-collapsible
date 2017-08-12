@@ -1,3 +1,5 @@
-import renderCollapsible from './collapsible/renderCollapsible';
+import Collapsible from './collapsible/Collapsible';
+import renderCollapsibles from './collapsible/renderCollapsibles';
 
-export default renderCollapsible;
+export default Collapsible;
+export { renderCollapsibles };

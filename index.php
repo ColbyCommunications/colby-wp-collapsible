@@ -21,15 +21,28 @@ function render_collapsible( $atts, $content ) {
 		return '';
 	}
 
-	$data_open = $atts['open'] && '1' === $atts['open']
-		? "data-open=\"true\""
-		: '';
+	$open = $atts['open'] && '1' === $atts['open'] ? ' open' : '';
+	$active = $open ? ' active': '';
 
 	$trigger = esc_attr( $atts['trigger'] );
 	$content = apply_filters( 'the_content', $content );
 
+	$svg = '';
+	if ( shortcode_exists( 'colby-svg' ) ) {
+		$svg = do_shortcode( '[colby-svg name="down-arrow"]' );
+	}
+
 	return "
-		<div data-collapsible $data_open data-trigger=\"$trigger\">$content</div>
+		<div class=\"collapsibleContainer$open\" data-collapsible>
+			<span class=trigger data-trigger>
+				<button class=\"btn btn-primary$active\">$trigger $svg</button>
+			</span>
+			<div class=collapsibleContentContainer>
+				<div class=collapsibleContent>
+					$content
+				</div>
+			</div>
+		</div>
 	";
 }
 
@@ -61,14 +74,10 @@ add_action( 'init', 'register_collapsible_container' );
 
 add_action( 'wp_enqueue_scripts', function() {
 	$min = defined( 'PROD' ) && PROD === true ? '.min' : '';
+	$dist = plugin_dir_url( __FILE__ ) . 'dist';
 
-	wp_register_script('collapsible', "https://unpkg.com/colby-wp-react-collapsible@latest/dist/colby-wp-react-collapsible$min.js", ['react', 'react-dom'], '', true);
-}, 10, 1 );
-
-add_action( 'wp_enqueue_scripts', function() {
-	$min = defined( 'PROD' ) && PROD === true ? '.min' : '';
-
-	wp_register_style('collapsible', "https://unpkg.com/colby-wp-react-collapsible@latest/dist/colby-wp-react-collapsible$min.css", [], '');
+	wp_register_script('collapsible', "$dist/colby-wp-collapsible$min.js", [], '', true);
+	wp_register_style('collapsible', "$dist/colby-wp-collapsible$min.css", ['colby-bootstrap'], '');
 }, 10, 1 );
 
 function maybe_enqueue_collapsible() {

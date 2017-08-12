@@ -1,3 +1,3 @@
-import renderCollapsible from './collapsible/renderCollapsible';
+import renderCollapsibles from './collapsible/renderCollapsibles';
 
-window.addEventListener('load', renderCollapsible);
+window.addEventListener('load', renderCollapsibles);

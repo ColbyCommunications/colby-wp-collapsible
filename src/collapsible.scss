@@ -3,8 +3,6 @@
 @import '~colby-scss/variables';
 
 .trigger {
-  width: 100%;
-
   button {
     width: 100%;
     display: flex;
@@ -41,6 +39,16 @@
       transform: rotate(180deg);
     }
   }
+}
+
+.collapsibleContentContainer {
+  height: 0;
+  overflow: hidden;
+  transition: height .3s;
+}
+
+.collapsibleContent {
+  padding: 1rem 0 0;
 }
 
 .contentInner {
