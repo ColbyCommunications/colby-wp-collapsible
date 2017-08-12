@@ -1,7 +1,7 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
-import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 import packageJson from './package.json';
 
@@ -33,6 +33,7 @@ const main = () => {
       filename,
       path: path.resolve(__dirname, 'dist'),
     },
+    plugins,
     module: {
       rules: [
         {
@@ -63,13 +64,7 @@ const main = () => {
         },
       ],
     },
-    externals: {
-      'prop-types': 'PropTypes',
-      'react': 'React',
-      'react-dom': 'ReactDOM',
-    },
     target: 'web',
-    plugins: [new ExtractTextPlugin(`${packageJson.name}${min}.css`)],
   };
 };
 
