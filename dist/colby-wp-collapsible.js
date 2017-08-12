@@ -128,6 +128,7 @@ var Collapsible = function () {
         this.props.contentContainer.style.height = '0';
       } else {
         this.props.container.classList.add('open');
+        this.contentHeight = this.props.content.clientHeight;
         this.props.contentContainer.style.height = this.contentHeight + 'px';
       }
 
@@ -136,10 +137,17 @@ var Collapsible = function () {
   }, {
     key: 'run',
     value: function run() {
-      this.contentHeight = this.props.content.clientHeight;
+      var _this = this;
 
       this.handleClick();
       this.props.trigger.addEventListener('click', this.handleClick.bind(this));
+
+      window.addEventListener('resize', function () {
+        if (_this.open) {
+          _this.contentHeight = _this.props.content.clientHeight;
+          _this.props.contentContainer.style.height = _this.contentHeight + 'px';
+        }
+      });
     }
   }]);
 
