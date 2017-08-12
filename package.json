@@ -1,6 +1,6 @@
 {
   "name": "colby-wp-collapsible",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A WordPress shortcode for collapsible HTML drawers.",
   "main": "src/",
   "scripts": {
@@ -10,7 +10,9 @@
     "build-all": "npm run build && npm run build-dev"
   },
   "author": "John Watkins",
-  "keywords": ["wordpress"],
+  "keywords": [
+    "wordpress"
+  ],
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -30,17 +32,29 @@
     "webpack": "^2.5.0",
     "webpack-bundle-analyzer": "^2.9.0"
   },
-  "browserslist": ["> 1%", "last 2 versions", "IE 11"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 11"
+  ],
   "eslintConfig": {
-    "extends": ["johnwatkins0"]
+    "extends": [
+      "johnwatkins0"
+    ]
   },
-  "eslintIgnore": ["dist/*.js", "postcss.config.js"],
+  "eslintIgnore": [
+    "dist/*.js",
+    "postcss.config.js"
+  ],
   "dependencies": {
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
     "colby-scss": "^1.0.8",
     "colby-wp-svg": "^1.1.4"
   },
   "babel": {
-    "presets": ["es2015", "react"]
+    "presets": [
+      "es2015",
+      "react"
+    ]
   }
 }
