@@ -21,7 +21,7 @@ function render_collapsible( $atts, $content ) {
 		return '';
 	}
 
-	$open = $atts['open'] && '1' === $atts['open'] ? ' open' : '';
+	$open = $atts['open'] && in_array( $atts['open'], ['1', 'true'], true ) ? ' open' : '';
 	$active = $open ? ' active': '';
 
 	$trigger = esc_attr( $atts['trigger'] );
