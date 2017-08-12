@@ -25,8 +25,8 @@ The shortcode will output nothing if there is no closing tag and no content betw
 
 | Attribute | Description | Required | Default |
 | --------- | ----------- | -------- | ------- |
-| title|trigger | The text to display in the drawer opener | required | |
-| open | Open the drawer on pageload?  | optional | false |
+| title/trigger | The text to display in the drawer opener | required | |
+| open | Open the drawer on pageload? Enter "1" or "true" for true. | optional | "false" |
 
 ## Development
 // To-do
