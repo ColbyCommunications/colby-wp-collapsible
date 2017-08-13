@@ -9,7 +9,6 @@ foreach ( [ 'tboot_accordion', 'tboot_accordion_section' ] as $shortcode ) {
 	remove_shortcode( $shortcode );
 }
 
-
 function render_collapsible( $atts, $content ) {
 	$atts = $atts ?: [];
 
