@@ -2,6 +2,8 @@ class Collapsible {
   constructor(props) {
     this.props = props;
     this.open = !props.open;
+
+    this.setHeight = this.setHeight.bind(this);
   }
 
   shouldRun() {
@@ -31,16 +33,19 @@ class Collapsible {
     this.open = !this.open;
   }
 
+  setHeight() {
+    if (this.open) {
+      this.contentHeight = this.props.content.clientHeight;
+      this.props.contentContainer.style.height = `${this.contentHeight}px`;
+    }
+  }
+
   run() {
     this.handleClick();
     this.props.trigger.addEventListener('click', this.handleClick.bind(this));
 
-    window.addEventListener('resize', () => {
-      if (this.open) {
-        this.contentHeight = this.props.content.clientHeight;
-        this.props.contentContainer.style.height = `${this.contentHeight}px`;
-      }
-    });
+    window.addEventListener('resize', this.setHeight);
+    setInterval(this.setHeight, 400);
   }
 }
 

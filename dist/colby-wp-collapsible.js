@@ -109,6 +109,8 @@ var Collapsible = function () {
 
     this.props = props;
     this.open = !props.open;
+
+    this.setHeight = this.setHeight.bind(this);
   }
 
   _createClass(Collapsible, [{
@@ -135,19 +137,21 @@ var Collapsible = function () {
       this.open = !this.open;
     }
   }, {
+    key: 'setHeight',
+    value: function setHeight() {
+      if (this.open) {
+        this.contentHeight = this.props.content.clientHeight;
+        this.props.contentContainer.style.height = this.contentHeight + 'px';
+      }
+    }
+  }, {
     key: 'run',
     value: function run() {
-      var _this = this;
-
       this.handleClick();
       this.props.trigger.addEventListener('click', this.handleClick.bind(this));
 
-      window.addEventListener('resize', function () {
-        if (_this.open) {
-          _this.contentHeight = _this.props.content.clientHeight;
-          _this.props.contentContainer.style.height = _this.contentHeight + 'px';
-        }
-      });
+      window.addEventListener('resize', this.setHeight);
+      setInterval(this.setHeight, 400);
     }
   }]);
 
