@@ -6,6 +6,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  white-space: normal;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -15,6 +16,7 @@
   border: none;
   border-radius: 2px;
   color: #fff;
+  margin: 0;
   border: 1px solid rgba(53, 53, 53, 0.1);
   background-color: rgba(0, 40, 120, 0.8);
   -webkit-transition: background-color .1s;
@@ -31,6 +33,7 @@
   color: white;
   height: 1.5rem;
   width: 1.5rem;
+  margin-left: auto;
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
   transition: transform .2s;

@@ -7,6 +7,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    white-space: normal;
     align-items: center;
     text-transform: uppercase;
     font-size: .891rem;
@@ -14,6 +15,7 @@
     border: none;
     border-radius: 2px;
     color: $white;
+    margin: 0;
     border: 1px solid $gray-100;
     background-color: rgba($blue, .8);
     transition: background-color .1s;
@@ -33,6 +35,7 @@
     color: white;
     height: 1.5rem;
     width: 1.5rem;
+    margin-left: auto;
     transition: transform .2s;
 
     .open & {
