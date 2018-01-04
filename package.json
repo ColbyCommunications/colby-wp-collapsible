@@ -7,7 +7,7 @@
     "start":
       "parcel example/src/index.html -d example -o --public-url /wp-collapsible/example/",
     "build":
-      "parcel build src/js/index.js && postcss src/css/colby-wp-collapsible.css -e production -o dist/colby-wp-collapsible.css",
+      "parcel build example/src/index.html -d example --public-url /wp-collapsible/example/ && parcel build src/js/index.js && postcss src/css/colby-wp-collapsible.css -e production -o dist/colby-wp-collapsible.css",
     "lint": "eslint src/js",
     "prepare": "npm build"
   },
