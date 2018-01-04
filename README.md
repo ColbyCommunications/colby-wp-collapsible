@@ -2,12 +2,21 @@
 
 A WordPress shortcode for collapsible HTML drawers.
 
-[Example](https://colbycommunications.github.io/colby-wp-collapsible/index.html)
+[Example](https://colbycommunications.github.io/wp-collapsible/example/)
 
-## Usage
+## Install
+
+### Via Composer
+
+```
+composer require colbycomms/wp-collapsible
+```
+
 ### As a WordPress plugin
 
 Clone this directory into wp-content/plugins and activate it through WordPress.
+
+## Usage
 
 Use the following shortcode:
 
@@ -19,14 +28,12 @@ Use the following shortcode:
 [/collapsible]
 ```
 
-The shortcode will output nothing if there is no closing tag and no content between the opening and closing tags.
+The shortcode will output nothing if there is no closing tag or no content
+between the opening and closing tags.
 
 #### Shortcode attributes
 
-| Attribute | Description | Required | Default |
-| --------- | ----------- | -------- | ------- |
-| title/trigger | The text to display in the drawer opener | required | |
-| open | Open the drawer on pageload? Enter "1" or "true" for true. | optional | "false" |
-
-## Development
-// To-do
+| Attribute     | Description                                                | Required | Default |
+| ------------- | ---------------------------------------------------------- | -------- | ------- |
+| title/trigger | The text to display in the drawer opener                   | required |         |
+| open          | Open the drawer on pageload? Enter "1" or "true" for true. | optional | "false" |
