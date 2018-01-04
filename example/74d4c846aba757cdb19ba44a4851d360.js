@@ -5,281 +5,258 @@
 //
 // anything defined in a previous bundle is accessed via the
 // orig method which is the require for previous bundles
+
 // eslint-disable-next-line no-global-assign
 require = (function (modules, cache, entry) {
-	// Save the require from previous bundle to this closure if any
-	var previousRequire = typeof require === "function" && require;
+  // Save the require from previous bundle to this closure if any
+  var previousRequire = typeof require === "function" && require;
 
-	function newRequire(name, jumped) {
-		if ( ! cache[name]) {
-			if ( ! modules[name]) {
-				// if we cannot find the module within our internal map or
-				// cache jump to the current global require ie. the last bundle
-				// that was added to the page.
-				var currentRequire = typeof require === "function" && require;
-				if ( ! jumped && currentRequire) {
-					return currentRequire( name, true );
-				}
+  function newRequire(name, jumped) {
+    if (!cache[name]) {
+      if (!modules[name]) {
+        // if we cannot find the module within our internal map or
+        // cache jump to the current global require ie. the last bundle
+        // that was added to the page.
+        var currentRequire = typeof require === "function" && require;
+        if (!jumped && currentRequire) {
+          return currentRequire(name, true);
+        }
 
-				// If there are other bundles on this page the require from the
-				// previous one is saved to 'previousRequire'. Repeat this as
-				// many times as there are bundles until the module is found or
-				// we exhaust the require chain.
-				if (previousRequire) {
-					return previousRequire( name, true );
-				}
+        // If there are other bundles on this page the require from the
+        // previous one is saved to 'previousRequire'. Repeat this as
+        // many times as there are bundles until the module is found or
+        // we exhaust the require chain.
+        if (previousRequire) {
+          return previousRequire(name, true);
+        }
 
-				var err = new Error( 'Cannot find module \'' + name + '\'' );
-				err.code = 'MODULE_NOT_FOUND';
-				throw err;
-			}
+        var err = new Error('Cannot find module \'' + name + '\'');
+        err.code = 'MODULE_NOT_FOUND';
+        throw err;
+      }
+      
+      localRequire.resolve = resolve;
 
-			localRequire.resolve = resolve;
+      var module = cache[name] = new newRequire.Module;
 
-			var module = cache[name] = new newRequire.Module();
+      modules[name][0].call(module.exports, localRequire, module, module.exports);
+    }
 
-			modules[name][0].call( module.exports, localRequire, module, module.exports );
-		}
+    return cache[name].exports;
 
-		return cache[name].exports;
+    function localRequire(x){
+      return newRequire(localRequire.resolve(x));
+    }
 
-		function localRequire(x){
-			return newRequire( localRequire.resolve( x ) );
-		}
+    function resolve(x){
+      return modules[name][1][x] || x;
+    }
+  }
 
-		function resolve(x){
-			return modules[name][1][x] || x;
-		}
-	}
+  function Module() {
+    this.bundle = newRequire;
+    this.exports = {};
+  }
 
-	function Module() {
-		this.bundle = newRequire;
-		this.exports = {};
-	}
+  newRequire.Module = Module;
+  newRequire.modules = modules;
+  newRequire.cache = cache;
+  newRequire.parent = previousRequire;
 
-	newRequire.Module = Module;
-	newRequire.modules = modules;
-	newRequire.cache = cache;
-	newRequire.parent = previousRequire;
+  for (var i = 0; i < entry.length; i++) {
+    newRequire(entry[i]);
+  }
 
-	for (var i = 0; i < entry.length; i++) {
-		newRequire( entry[i] );
-	}
+  // Override the current require with this new one
+  return newRequire;
+})({7:[function(require,module,exports) {
+"use strict";
 
-	// Override the current require with this new one
-	return newRequire;
-})(
-	{5:[function(require,module,exports) {
-		"use strict";
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-		Object.defineProperty(
-			exports, "__esModule", {
-				value: true
-			}
-		);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-		function _toConsumableArray(arr) { if (Array.isArray( arr )) {
-				for (var i = 0, arr2 = Array( arr.length ); i < arr.length; i++) {
-					arr2[i] = arr[i]; } return arr2; } else {
-				return Array.from( arr ); } }
+var removeEmptyParagraphs = function removeEmptyParagraphs(container) {
+  [].concat(_toConsumableArray(container.querySelectorAll('p'))).forEach(function (p) {
+    if (p.innerHTML.trim().length === 0) {
+      container.removeChild(p);
+    }
+  });
+};
 
-		var removeEmptyParagraphs = function removeEmptyParagraphs(container) {
-			[].concat( _toConsumableArray( container.querySelectorAll( 'p' ) ) ).forEach(
-				function (p) {
-					if (p.innerHTML.trim().length === 0) {
-						container.removeChild( p );
-					}
-				}
-			);
-		};
+var ensureTypeAndPressedAttributes = function ensureTypeAndPressedAttributes(heading) {
+  if (!heading.hasAttribute('aria-pressed')) {
+    heading.setAttribute('aria-pressed', 'false');
+  }
 
-		var ensureTypeAndPressedAttributes = function ensureTypeAndPressedAttributes(heading) {
-			if ( ! heading.hasAttribute( 'aria-pressed' )) {
-				heading.setAttribute( 'aria-pressed', 'false' );
-			}
+  if (!heading.hasAttribute('type')) {
+    heading.setAttribute('type', 'button');
+  }
+};
 
-			if ( ! heading.hasAttribute( 'type' )) {
-				heading.setAttribute( 'type', 'button' );
-			}
-		};
+var ensureAriaHiddenAttribute = function ensureAriaHiddenAttribute(panel) {
+  if (!panel.hasAttribute('aria-hidden')) {
+    panel.setAttribute('aria-hidden', 'true');
+  }
+};
 
-		var ensureAriaHiddenAttribute = function ensureAriaHiddenAttribute(panel) {
-			if ( ! panel.hasAttribute( 'aria-hidden' )) {
-				panel.setAttribute( 'aria-hidden', 'true' );
-			}
-		};
+var togglePress = function togglePress(heading) {
+  heading.setAttribute('aria-pressed', heading.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+};
 
-		var togglePress = function togglePress(heading) {
-			heading.setAttribute( 'aria-pressed', heading.getAttribute( 'aria-pressed' ) === 'true' ? 'false' : 'true' );
-		};
+var toggle = function toggle(panel) {
+  panel.setAttribute('aria-hidden', panel.getAttribute('aria-hidden') === 'true' ? 'false' : 'true');
+};
 
-		var toggle = function toggle(panel) {
-			panel.setAttribute( 'aria-hidden', panel.getAttribute( 'aria-hidden' ) === 'true' ? 'false' : 'true' );
-		};
+var collapsiblize = exports.collapsiblize = function collapsiblize(_ref) {
+  var heading = _ref.heading,
+      panel = _ref.panel;
 
-		var collapsiblize = exports.collapsiblize = function collapsiblize(_ref) {
-			var heading = _ref.heading,
-			  panel = _ref.panel;
+  removeEmptyParagraphs(panel);
+  ensureTypeAndPressedAttributes(heading);
+  ensureAriaHiddenAttribute(panel);
 
-			removeEmptyParagraphs( panel );
-			ensureTypeAndPressedAttributes( heading );
-			ensureAriaHiddenAttribute( panel );
+  heading.addEventListener('click', function () {
+    togglePress(heading);
+    toggle(panel);
+  });
+};
+},{}],6:[function(require,module,exports) {
+"use strict";
 
-			heading.addEventListener(
-				'click', function () {
-					togglePress( heading );
-					toggle( panel );
-				}
-			);
-		};
-	},{}],3:[function(require,module,exports) {
-		"use strict";
+var _collapsiblize = require("./collapsiblize");
 
-		var _collapsiblize = require( "./collapsiblize" );
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-		function _toConsumableArray(arr) { if (Array.isArray( arr )) {
-				for (var i = 0, arr2 = Array( arr.length ); i < arr.length; i++) {
-					arr2[i] = arr[i]; } return arr2; } else {
-				return Array.from( arr ); } }
+window.addEventListener('load', function () {
+  [].concat(_toConsumableArray(document.querySelectorAll('[data-collapsible]'))).forEach(function (container) {
+    var heading = container.querySelector('.collapsible-heading');
+    var panel = container.querySelector('.collapsible-panel');
 
-		window.addEventListener(
-			'load', function () {
-				[].concat( _toConsumableArray( document.querySelectorAll( '[data-collapsible]' ) ) ).forEach(
-					function (container) {
-						var heading = container.querySelector( '.collapsible-heading' );
-						var panel = container.querySelector( '.collapsible-panel' );
+    if (heading && panel) {
+      (0, _collapsiblize.collapsiblize)({ heading: heading, panel: panel });
+    }
+  });
+});
+},{"./collapsiblize":7}],0:[function(require,module,exports) {
+var global = (1, eval)('this');
+var OldModule = module.bundle.Module;
+function Module() {
+  OldModule.call(this);
+  this.hot = {
+    accept: function (fn) {
+      this._acceptCallback = fn || function () {};
+    },
+    dispose: function (fn) {
+      this._disposeCallback = fn;
+    }
+  };
+}
 
-						if (heading && panel) {
-							(0, _collapsiblize.collapsiblize)( { heading: heading, panel: panel } );
-						}
-					}
-				);
-			}
-		);
-	},{"./collapsiblize":5}],0:[function(require,module,exports) {
-		var global = (1, eval)( 'this' );
-		var OldModule = module.bundle.Module;
-		function Module() {
-			OldModule.call( this );
-			this.hot = {
-				accept: function (fn) {
-					this._acceptCallback = fn || function () {};
-				},
-				dispose: function (fn) {
-					this._disposeCallback = fn;
-				}
-			};
-		}
+module.bundle.Module = Module;
 
-		module.bundle.Module = Module;
+if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
+  var ws = new WebSocket('ws://' + window.location.hostname + ':55842/');
+  ws.onmessage = function(event) {
+    var data = JSON.parse(event.data);
 
-		if ( ! module.bundle.parent && typeof WebSocket !== 'undefined') {
-			var ws = new WebSocket( 'ws://' + window.location.hostname + ':56765/' );
-			ws.onmessage = function(event) {
-				var data = JSON.parse( event.data );
+    if (data.type === 'update') {
+      data.assets.forEach(function (asset) {
+        hmrApply(global.require, asset);
+      });
 
-				if (data.type === 'update') {
-					data.assets.forEach(
-						function (asset) {
-							hmrApply( global.require, asset );
-						}
-					);
+      data.assets.forEach(function (asset) {
+        if (!asset.isNew) {
+          hmrAccept(global.require, asset.id);
+        }
+      });
+    }
 
-					data.assets.forEach(
-						function (asset) {
-							if ( ! asset.isNew) {
-								hmrAccept( global.require, asset.id );
-							}
-						}
-					);
-				}
+    if (data.type === 'reload') {
+      ws.close();
+      ws.onclose = function () {
+        window.location.reload();
+      }
+    }
 
-				if (data.type === 'reload') {
-					ws.close();
-					ws.onclose = function () {
-						window.location.reload();
-					}
-				}
+    if (data.type === 'error-resolved') {
+      console.log('[parcel] ✨ Error resolved');
+    }
 
-				if (data.type === 'error-resolved') {
-					console.log( '[parcel] ✨ Error resolved' );
-				}
+    if (data.type === 'error') {
+      console.error('[parcel] 🚨  ' + data.error.message + '\n' + 'data.error.stack');
+    }
+  };
+}
 
-				if (data.type === 'error') {
-					console.error( '[parcel] 🚨  ' + data.error.message + '\n' + 'data.error.stack' );
-				}
-			};
-		}
+function getParents(bundle, id) {
+  var modules = bundle.modules;
+  if (!modules) {
+    return [];
+  }
 
-		function getParents(bundle, id) {
-			var modules = bundle.modules;
-			if ( ! modules) {
-				return [];
-			}
+  var parents = [];
+  var k, d, dep;
 
-			var parents = [];
-			var k, d, dep;
+  for (k in modules) {
+    for (d in modules[k][1]) {
+      dep = modules[k][1][d];
+      if (dep === id || (Array.isArray(dep) && dep[dep.length - 1] === id)) {
+        parents.push(+k);
+      }
+    }
+  }
 
-			for (k in modules) {
-				for (d in modules[k][1]) {
-					dep = modules[k][1][d];
-					if (dep === id || (Array.isArray( dep ) && dep[dep.length - 1] === id)) {
-						parents.push( +k );
-					}
-				}
-			}
+  if (bundle.parent) {
+    parents = parents.concat(getParents(bundle.parent, id));
+  }
 
-			if (bundle.parent) {
-				parents = parents.concat( getParents( bundle.parent, id ) );
-			}
+  return parents;
+}
 
-			return parents;
-		}
+function hmrApply(bundle, asset) {
+  var modules = bundle.modules;
+  if (!modules) {
+    return;
+  }
 
-		function hmrApply(bundle, asset) {
-			var modules = bundle.modules;
-			if ( ! modules) {
-				return;
-			}
+  if (modules[asset.id] || !bundle.parent) {
+    var fn = new Function('require', 'module', 'exports', asset.generated.js);
+    asset.isNew = !modules[asset.id];
+    modules[asset.id] = [fn, asset.deps];
+  } else if (bundle.parent) {
+    hmrApply(bundle.parent, asset);
+  }
+}
 
-			if (modules[asset.id] || ! bundle.parent) {
-				var fn = new Function( 'require', 'module', 'exports', asset.generated.js );
-				asset.isNew = ! modules[asset.id];
-				modules[asset.id] = [fn, asset.deps];
-			} else if (bundle.parent) {
-				hmrApply( bundle.parent, asset );
-			}
-		}
+function hmrAccept(bundle, id) {
+  var modules = bundle.modules;
+  if (!modules) {
+    return;
+  }
 
-		function hmrAccept(bundle, id) {
-			var modules = bundle.modules;
-			if ( ! modules) {
-				return;
-			}
+  if (!modules[id] && bundle.parent) {
+    return hmrAccept(bundle.parent, id);
+  }
 
-			if ( ! modules[id] && bundle.parent) {
-				return hmrAccept( bundle.parent, id );
-			}
+  var cached = bundle.cache[id];
+  if (cached && cached.hot._disposeCallback) {
+    cached.hot._disposeCallback();
+  }
 
-			var cached = bundle.cache[id];
-			if (cached && cached.hot._disposeCallback) {
-				cached.hot._disposeCallback();
-			}
+  delete bundle.cache[id];
+  bundle(id);
 
-			delete bundle.cache[id];
-			bundle( id );
+  cached = bundle.cache[id];
+  if (cached && cached.hot && cached.hot._acceptCallback) {
+    cached.hot._acceptCallback();
+    return true;
+  }
 
-			cached = bundle.cache[id];
-			if (cached && cached.hot && cached.hot._acceptCallback) {
-				cached.hot._acceptCallback();
-				return true;
-			}
-
-			return getParents( global.require, id ).some(
-				function (id) {
-					return hmrAccept( global.require, id )
-				}
-			);
-		}
-	},{}]},{},[0,3]
-)
+  return getParents(global.require, id).some(function (id) {
+    return hmrAccept(global.require, id)
+  });
+}
+},{}]},{},[0,6])
