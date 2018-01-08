@@ -22,7 +22,7 @@
   },
   "require": {
     "colbycomms/colby-svg": "dev-master",
-    "htmlburger/carbon-fields": "dev-master"
+    "htmlburger/carbon-fields": "*"
   },
   "autoload": {
     "psr-4": {
