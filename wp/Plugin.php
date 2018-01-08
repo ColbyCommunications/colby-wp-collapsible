@@ -45,8 +45,13 @@ class Plugin {
 	 * Registers the plugin's script.
 	 */
 	public function register_script_and_style() {
-		$plugin_dir_url = plugin_dir_url( dirname( __DIR__ ) . '/index.php' );
-		$dist = "{$plugin_dir_url}dist";
+		$root_url = plugin_dir_url( dirname( __DIR__ ) . '/index.php' );
+
+		if ( ! file_exists( $root_url ) ) {
+			$root_url = get_template_directory_uri() . '/vendor/colbycomms/wp-collapsible/';
+		}
+
+		$dist = "{$root_url}dist";
 
 		wp_register_script( 'colbycomms/collapsible', "$dist/index.js", [], '', true );
 		wp_register_style( 'colbycomms/collapsible', "$dist/colby-wp-collapsible.css", [], '' );
