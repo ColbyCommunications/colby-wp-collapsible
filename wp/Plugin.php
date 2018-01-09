@@ -7,6 +7,10 @@
 
 namespace ColbyComms\Collapsible;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	return;
+}
+
 /**
  * Performs core plugin setup.
  */
@@ -47,7 +51,7 @@ class Plugin {
 	public function register_script_and_style() {
 		$root_url = plugin_dir_url( dirname( __DIR__ ) . '/index.php' );
 
-		if ( ! file_exists( $root_url ) ) {
+		if ( ! file_exists( $root_url ) && function_exists( 'get_template_directory_uri' ) ) {
 			$root_url = get_template_directory_uri() . '/vendor/colbycomms/wp-collapsible/';
 		}
 
