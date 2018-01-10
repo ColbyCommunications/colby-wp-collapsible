@@ -2,7 +2,7 @@
   "name": "colby-wp-collapsible",
   "version": "1.0.14",
   "description": "A WordPress shortcode for collapsible HTML drawers.",
-  "main": "dist/index.js",
+  "main": "src/js",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p && webpack -p --config webpack.build.config.babel.js",
