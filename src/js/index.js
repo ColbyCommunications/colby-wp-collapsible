@@ -1,4 +1,4 @@
-import {collapsiblize} from './collapsiblize';
+import { collapsiblize } from './collapsiblize';
 
 window.addEventListener('load', () => {
   [...document.querySelectorAll('[data-collapsible]')].forEach(container => {
@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
     const panel = container.querySelector('.collapsible-panel');
 
     if (heading && panel) {
-      collapsiblize({heading, panel});
+      collapsiblize({ heading, panel });
     }
   });
 });
