@@ -68,7 +68,8 @@ class Plugin {
 		global $post;
 
 		if ( has_shortcode( $post->post_content, 'tboot_accordion_section' )
-				|| has_shortcode( $post->post_content, 'collapsible' ) ) {
+				|| has_shortcode( $post->post_content, 'collapsible' )
+				&& apply_filters( 'colbycomms_collapsible__enqueue_script', true ) ) {
 			wp_enqueue_script( 'colbycomms/collapsible' );
 		}
 	}

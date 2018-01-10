@@ -7,12 +7,10 @@
     "start": "webpack-dev-server",
     "build": "webpack -p && webpack -p --config webpack.build.config.babel.js",
     "lint": "eslint src/js",
-    "prepare": "build"
+    "prepare": "npm run build"
   },
   "author": "John Watkins",
-  "keywords": [
-    "wordpress"
-  ],
+  "keywords": ["wordpress"],
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
