@@ -4,21 +4,21 @@
   "description": "A WordPress shortcode for collapsible HTML drawers.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "parcel example/src/index.html -d example -o --public-url /wp-collapsible/example/",
-    "build": "parcel build example/src/index.html -d example --public-url /wp-collapsible/example/ && parcel build src/js/index.js && postcss src/css/colby-wp-collapsible.css -e production -o dist/colby-wp-collapsible.css",
+    "start": "webpack-dev-server",
+    "build": "webpack -p && webpack -p --config webpack.build.config.babel.js",
     "lint": "eslint src/js",
-    "prepare": "npm run build"
+    "prepare": "build"
   },
   "author": "John Watkins",
-  "keywords": [
-    "wordpress"
-  ],
+  "keywords": ["wordpress"],
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^8.1.2",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.8",
     "cssnano": "^3.10.0",
     "eslint": "^4.14.0",
     "eslint-config-fbjs": "^2.0.1",
@@ -27,9 +27,14 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-relay": "^0.0.20",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
     "node-autodeploy-wp": "^1.0.20",
-    "parcel-bundler": "^1.4.1",
-    "postcss-cli": "^4.1.1"
+    "postcss-cli": "^4.1.1",
+    "postcss-loader": "^2.0.10",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
   },
   "dependencies": {
     "postcss": "^6.0.15"
