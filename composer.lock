@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "29a4cbb4bef16b94c9e828a0f968f908",
+    "content-hash": "7dbffffb573d058f3a13ae76e0a63e3e",
     "packages": [
         {
             "name": "colbycomms/colby-svg",
@@ -48,137 +48,17 @@
             "time": "2018-01-04T12:04:18+00:00"
         },
         {
-            "name": "composer/installers",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/installers.git",
-                "reference": "049797d727261bf27f2690430d935067710049c2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
-                "reference": "049797d727261bf27f2690430d935067710049c2",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0"
-            },
-            "replace": {
-                "roundcube/plugin-installer": "*",
-                "shama/baton": "*"
-            },
-            "require-dev": {
-                "composer/composer": "1.0.*@dev",
-                "phpunit/phpunit": "^4.8.36"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Composer\\Installers\\Plugin",
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Composer\\Installers\\": "src/Composer/Installers"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kyle Robinson Young",
-                    "email": "kyle@dontkry.com",
-                    "homepage": "https://github.com/shama"
-                }
-            ],
-            "description": "A multi-framework Composer library installer",
-            "homepage": "https://composer.github.io/installers/",
-            "keywords": [
-                "Craft",
-                "Dolibarr",
-                "Eliasis",
-                "Hurad",
-                "ImageCMS",
-                "Kanboard",
-                "Lan Management System",
-                "MODX Evo",
-                "Mautic",
-                "Maya",
-                "OXID",
-                "Plentymarkets",
-                "Porto",
-                "RadPHP",
-                "SMF",
-                "Thelia",
-                "WolfCMS",
-                "agl",
-                "aimeos",
-                "annotatecms",
-                "attogram",
-                "bitrix",
-                "cakephp",
-                "chef",
-                "cockpit",
-                "codeigniter",
-                "concrete5",
-                "croogo",
-                "dokuwiki",
-                "drupal",
-                "eZ Platform",
-                "elgg",
-                "expressionengine",
-                "fuelphp",
-                "grav",
-                "installer",
-                "itop",
-                "joomla",
-                "kohana",
-                "laravel",
-                "lavalite",
-                "lithium",
-                "magento",
-                "majima",
-                "mako",
-                "mediawiki",
-                "modulework",
-                "modx",
-                "moodle",
-                "osclass",
-                "phpbb",
-                "piwik",
-                "ppi",
-                "puppet",
-                "pxcms",
-                "reindex",
-                "roundcube",
-                "shopware",
-                "silverstripe",
-                "sydes",
-                "symfony",
-                "typo3",
-                "wordpress",
-                "yawik",
-                "zend",
-                "zikula"
-            ],
-            "time": "2017-12-29T09:13:20+00:00"
-        },
-        {
             "name": "htmlburger/carbon-fields",
-            "version": "2.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/htmlburger/carbon-fields.git",
-                "reference": "bcfb81e12d0e3162609e938efbdd4ae01bd4abde"
+                "reference": "0737a5efcb1432c6eda4956949589be0906c8044"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/carbon-fields/zipball/bcfb81e12d0e3162609e938efbdd4ae01bd4abde",
-                "reference": "bcfb81e12d0e3162609e938efbdd4ae01bd4abde",
+                "url": "https://api.github.com/repos/htmlburger/carbon-fields/zipball/0737a5efcb1432c6eda4956949589be0906c8044",
+                "reference": "0737a5efcb1432c6eda4956949589be0906c8044",
                 "shasum": ""
             },
             "require": {
@@ -288,46 +168,7 @@
             ],
             "description": "WordPress developer-friendly custom fields for post types, taxonomy terms, users, comments, widgets, options and more.",
             "homepage": "http://carbonfields.net/",
-            "time": "2017-11-16T15:36:25+00:00"
-        },
-        {
-            "name": "htmlburger/carbon-fields-plugin",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/htmlburger/carbon-fields-plugin.git",
-                "reference": "9e44a2e0bde54e7c11fccca7e4e0a26ab2c9e306"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/carbon-fields-plugin/zipball/9e44a2e0bde54e7c11fccca7e4e0a26ab2c9e306",
-                "reference": "9e44a2e0bde54e7c11fccca7e4e0a26ab2c9e306",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "^1.0",
-                "htmlburger/carbon-fields": "2.1.1",
-                "php": ">=5.3"
-            },
-            "type": "wordpress-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Carbon_Fields_Plugin\\": "core/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "atanas-angelov-dev",
-                    "email": "atanas.angelov.dev@gmail.com"
-                }
-            ],
-            "description": "WordPress plugin loader for Carbon Fields.",
-            "homepage": "http://carbonfields.net/",
-            "time": "2017-11-16T15:52:10+00:00"
+            "time": "2018-01-04T13:25:13+00:00"
         }
     ],
     "packages-dev": [
@@ -389,12 +230,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "824f0e4221da35814eab8fcf2926781398dc5d5a"
+                "reference": "2e810499ac62b42d1c3cf6c008b604744345bade"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/824f0e4221da35814eab8fcf2926781398dc5d5a",
-                "reference": "824f0e4221da35814eab8fcf2926781398dc5d5a",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/2e810499ac62b42d1c3cf6c008b604744345bade",
+                "reference": "2e810499ac62b42d1c3cf6c008b604744345bade",
                 "shasum": ""
             },
             "require": {
@@ -421,7 +262,7 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2018-01-04T14:47:51+00:00"
+            "time": "2018-01-08T20:32:43+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -635,12 +476,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "c8a91684d6446b6ab8f5bc0c1f730612be3abcf6"
+                "reference": "3bf31c9f4eed9b89c5a4fdbe0100dfd26d08fa8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/c8a91684d6446b6ab8f5bc0c1f730612be3abcf6",
-                "reference": "c8a91684d6446b6ab8f5bc0c1f730612be3abcf6",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/3bf31c9f4eed9b89c5a4fdbe0100dfd26d08fa8e",
+                "reference": "3bf31c9f4eed9b89c5a4fdbe0100dfd26d08fa8e",
                 "shasum": ""
             },
             "require": {
@@ -677,7 +518,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2018-01-03T08:19:52+00:00"
+            "time": "2018-01-07T20:52:59+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -1042,12 +883,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "998f0bd4be2065af95a26210c3de82150af3439f"
+                "reference": "f1068d82842a17ab5705bc59ecb46ce2f6cb09e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/998f0bd4be2065af95a26210c3de82150af3439f",
-                "reference": "998f0bd4be2065af95a26210c3de82150af3439f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f1068d82842a17ab5705bc59ecb46ce2f6cb09e5",
+                "reference": "f1068d82842a17ab5705bc59ecb46ce2f6cb09e5",
                 "shasum": ""
             },
             "require": {
@@ -1114,7 +955,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-01-04T12:09:13+00:00"
+            "time": "2018-01-06T07:02:21+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1122,12 +963,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "322aee0882608c853cae88a1ebdd5a67690827e5"
+                "reference": "74826a1c994735b37d40a981ede631872f85747d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/322aee0882608c853cae88a1ebdd5a67690827e5",
-                "reference": "322aee0882608c853cae88a1ebdd5a67690827e5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/74826a1c994735b37d40a981ede631872f85747d",
+                "reference": "74826a1c994735b37d40a981ede631872f85747d",
                 "shasum": ""
             },
             "require": {
@@ -1170,7 +1011,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2017-12-16T09:57:42+00:00"
+            "time": "2018-01-09T05:32:02+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -1554,12 +1395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/object-reflector.git",
-                "reference": "e1b86d7bde734bd7d05454ea964eb8283a3259b6"
+                "reference": "ff755086ff55902772e3fae5dd5f29bcbae68285"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/e1b86d7bde734bd7d05454ea964eb8283a3259b6",
-                "reference": "e1b86d7bde734bd7d05454ea964eb8283a3259b6",
+                "url": "https://api.github.com/repos/sebastianbergmann/object-reflector/zipball/ff755086ff55902772e3fae5dd5f29bcbae68285",
+                "reference": "ff755086ff55902772e3fae5dd5f29bcbae68285",
                 "shasum": ""
             },
             "require": {
@@ -1591,7 +1432,7 @@
             ],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-            "time": "2017-11-16T09:51:26+00:00"
+            "time": "2018-01-07T16:00:13+00:00"
         },
         {
             "name": "sebastian/recursion-context",
@@ -1737,12 +1578,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "6f3585e712046464cc0efeb2bc1c91821c0fb678"
+                "reference": "8eee3c28936b255a0c1920d81bc7df5796ba592c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6f3585e712046464cc0efeb2bc1c91821c0fb678",
-                "reference": "6f3585e712046464cc0efeb2bc1c91821c0fb678",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/8eee3c28936b255a0c1920d81bc7df5796ba592c",
+                "reference": "8eee3c28936b255a0c1920d81bc7df5796ba592c",
                 "shasum": ""
             },
             "require": {
@@ -1780,7 +1621,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-01-04T00:20:29+00:00"
+            "time": "2018-01-05T02:24:46+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -1917,7 +1758,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "colbycomms/colby-svg": 20,
-        "htmlburger/carbon-fields-plugin": 20,
         "squizlabs/php_codesniffer": 20,
         "wp-coding-standards/wpcs": 20,
         "johnpbloch/wordpress-core": 20

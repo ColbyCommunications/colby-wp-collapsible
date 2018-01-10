@@ -30,13 +30,17 @@ const togglePress = heading => {
 };
 
 const toggle = panel => {
-  panel.setAttribute(
-    'aria-hidden',
-    panel.getAttribute('aria-hidden') === 'true' ? 'false' : 'true'
+  const wasHidden = panel.getAttribute('aria-hidden');
+  panel.setAttribute('aria-hidden', wasHidden === 'true' ? 'false' : 'true');
+
+  panel.dispatchEvent(
+    new CustomEvent('change', {
+      detail: { open: wasHidden === 'true' },
+    })
   );
 };
 
-export const collapsiblize = ({heading, panel}) => {
+export const collapsiblize = ({ heading, panel }) => {
   removeEmptyParagraphs(panel);
   ensureTypeAndPressedAttributes(heading);
   ensureAriaHiddenAttribute(panel);

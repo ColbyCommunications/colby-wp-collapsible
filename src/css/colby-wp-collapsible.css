@@ -7,12 +7,12 @@
   width: 100%;
   position: relative;
   border: none;
-  background-color: #002878;
-  color: white;
+  line-height: 1.4rem;
   padding: 0.5rem;
   text-transform: uppercase;
   cursor: pointer;
   transition: opacity 0.2s;
+  padding-right: 2.25rem;
 }
 
 .collapsible-heading:hover {
@@ -23,9 +23,10 @@
   position: absolute;
   right: 1rem;
   top: 0;
+  padding-top: .75rem;
   bottom: 0.25rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   content: '+';
 }
 
