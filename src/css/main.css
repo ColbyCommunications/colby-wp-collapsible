@@ -13,6 +13,10 @@
   cursor: pointer;
   transition: opacity 0.2s;
   padding-right: 2.25rem;
+  background: #002878;
+  color: white;
+  font-size: 100%;
+  transition: opacity .2s;
 }
 
 .collapsible-heading:hover {
@@ -23,7 +27,7 @@
   position: absolute;
   right: 1rem;
   top: 0;
-  padding-top: .75rem;
+  padding-top: .5rem;
   bottom: 0.25rem;
   display: flex;
   align-items: flex-start;

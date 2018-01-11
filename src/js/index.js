@@ -1,23 +1,3 @@
-import { collapsiblize } from './collapsiblize';
+import Collapsibles from './Collapsibles';
 
-class Collapsibles {
-  static init() {
-    if (!Collapsibles.hasStarted) {
-      Collapsibles.run();
-    }
-  }
-
-  static run() {
-    Collapsibles.hasStarted = true;
-    [...document.querySelectorAll('[data-collapsible]')].forEach(container => {
-      const heading = container.querySelector('.collapsible-heading');
-      const panel = container.querySelector('.collapsible-panel');
-
-      if (heading && panel) {
-        collapsiblize({ heading, panel });
-      }
-    });
-  }
-}
-
-export default Collapsibles;
+window.addEventListener('load', Collapsibles.init);
