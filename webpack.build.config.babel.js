@@ -8,7 +8,7 @@ const main = () => {
   const PROD = process.argv.includes('-p');
   const min = PROD ? '.min' : '';
   const entry = {
-    [packageJson.name]: ['./src/js/runCollapsibles.js', './src/css/main.css'],
+    [packageJson.name]: ['./src/js/index.js', './src/css/main.css'],
   };
   const filename = `[name]${min}.js`;
   const plugins = [new ExtractTextPlugin(`[name]${min}.css`)];
