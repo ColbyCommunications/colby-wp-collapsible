@@ -1,6 +1,6 @@
 {
   "name": "colby-wp-collapsible",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "A WordPress shortcode for collapsible HTML drawers.",
   "main": "src/js",
   "scripts": {
@@ -10,7 +10,9 @@
     "prepare": "npm run build"
   },
   "author": "John Watkins",
-  "keywords": ["wordpress"],
+  "keywords": [
+    "wordpress"
+  ],
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
