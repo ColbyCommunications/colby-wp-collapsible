@@ -80,8 +80,9 @@ class Plugin {
 	public function maybe_enqueue_style() {
 		global $post;
 
-		if ( ! has_shortcode( $post->post_content, 'tboot_accordion_section' )
-				&& ! has_shortcode( $post->post_content, 'collapsible' ) ) {
+		if ( ( ! has_shortcode( $post->post_content, 'tboot_accordion_section' )
+				&& ! has_shortcode( $post->post_content, 'collapsible' ) )
+				|| ! apply_filters( 'colbycomms_collapsible__enqueue_style', true ) ) {
 			return;
 		}
 

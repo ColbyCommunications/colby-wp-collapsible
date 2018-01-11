@@ -23,7 +23,6 @@ const ensureAriaHiddenAttribute = panel => {
 };
 
 const togglePress = heading => {
-  console.log(heading.getAttribute('aria-pressed'));
   heading.setAttribute(
     'aria-pressed',
     heading.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'

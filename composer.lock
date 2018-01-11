@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ColbyCommunications/colby-svg.git",
-                "reference": "bd0e5ed31d3e33bb68e786a0ddb46816d121d9e3"
+                "reference": "4922d427ba87c214fd5ed1b01180b0d2012bc68f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ColbyCommunications/colby-svg/zipball/bd0e5ed31d3e33bb68e786a0ddb46816d121d9e3",
-                "reference": "bd0e5ed31d3e33bb68e786a0ddb46816d121d9e3",
+                "url": "https://api.github.com/repos/ColbyCommunications/colby-svg/zipball/4922d427ba87c214fd5ed1b01180b0d2012bc68f",
+                "reference": "4922d427ba87c214fd5ed1b01180b0d2012bc68f",
                 "shasum": ""
             },
             "require-dev": {
@@ -45,7 +45,7 @@
                 }
             ],
             "description": "A library of SVGs used across projects, with a PHP class for loading and echoing them, plus a shortcode for use in WordPress.",
-            "time": "2018-01-04T12:04:18+00:00"
+            "time": "2018-01-10T13:36:37+00:00"
         },
         {
             "name": "htmlburger/carbon-fields",
@@ -230,12 +230,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/johnpbloch/wordpress-core.git",
-                "reference": "2e810499ac62b42d1c3cf6c008b604744345bade"
+                "reference": "13626e90df85c152f97bc715f3490c8589ce13c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/2e810499ac62b42d1c3cf6c008b604744345bade",
-                "reference": "2e810499ac62b42d1c3cf6c008b604744345bade",
+                "url": "https://api.github.com/repos/johnpbloch/wordpress-core/zipball/13626e90df85c152f97bc715f3490c8589ce13c2",
+                "reference": "13626e90df85c152f97bc715f3490c8589ce13c2",
                 "shasum": ""
             },
             "require": {
@@ -262,7 +262,7 @@
                 "cms",
                 "wordpress"
             ],
-            "time": "2018-01-08T20:32:43+00:00"
+            "time": "2018-01-11T14:47:48+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -476,12 +476,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "3bf31c9f4eed9b89c5a4fdbe0100dfd26d08fa8e"
+                "reference": "9ff23ace62fe82ef78bcfb3eca6d270728ce51ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/3bf31c9f4eed9b89c5a4fdbe0100dfd26d08fa8e",
-                "reference": "3bf31c9f4eed9b89c5a4fdbe0100dfd26d08fa8e",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/9ff23ace62fe82ef78bcfb3eca6d270728ce51ab",
+                "reference": "9ff23ace62fe82ef78bcfb3eca6d270728ce51ab",
                 "shasum": ""
             },
             "require": {
@@ -518,7 +518,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2018-01-07T20:52:59+00:00"
+            "time": "2018-01-09T20:25:16+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -1578,12 +1578,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "8eee3c28936b255a0c1920d81bc7df5796ba592c"
+                "reference": "818f188f71940f9cf848eca29b037cbaa2cde2f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/8eee3c28936b255a0c1920d81bc7df5796ba592c",
-                "reference": "8eee3c28936b255a0c1920d81bc7df5796ba592c",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/818f188f71940f9cf848eca29b037cbaa2cde2f2",
+                "reference": "818f188f71940f9cf848eca29b037cbaa2cde2f2",
                 "shasum": ""
             },
             "require": {
@@ -1621,7 +1621,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-01-05T02:24:46+00:00"
+            "time": "2018-01-11T03:29:58+00:00"
         },
         {
             "name": "theseer/tokenizer",

@@ -9,17 +9,13 @@ class Collapsibles {
 
   static run() {
     Collapsibles.hasStarted = true;
-    window.addEventListener('load', () => {
-      [...document.querySelectorAll('[data-collapsible]')].forEach(
-        container => {
-          const heading = container.querySelector('.collapsible-heading');
-          const panel = container.querySelector('.collapsible-panel');
+    [...document.querySelectorAll('[data-collapsible]')].forEach(container => {
+      const heading = container.querySelector('.collapsible-heading');
+      const panel = container.querySelector('.collapsible-panel');
 
-          if (heading && panel) {
-            collapsiblize({ heading, panel });
-          }
-        }
-      );
+      if (heading && panel) {
+        collapsiblize({ heading, panel });
+      }
     });
   }
 }
