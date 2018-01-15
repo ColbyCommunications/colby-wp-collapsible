@@ -7,6 +7,8 @@
 
 namespace ColbyComms\Collapsible;
 
+use ColbyComms\Collapsible\WpFunctions as WP;
+
 /**
  * Creates [collapsible].
  */
@@ -16,7 +18,7 @@ class CollapsibleShortcode {
 	 *
 	 * @var array
 	 */
-	public $defaults = [
+	public static $defaults = [
 		'title' => '',
 		'trigger' => '',
 		'open' => 'false',
@@ -26,34 +28,74 @@ class CollapsibleShortcode {
 	 * Adds hooks.
 	 */
 	public function __construct() {
-		add_action( 'init', [ $this, 'register_shortcode' ] );
+		WP::add_action( 'init', [ __CLASS__, 'register_shortcode' ] );
 	}
 
 	/**
 	 * Registers the shortcodes.
 	 */
-	public function register_shortcode() {
-		add_shortcode( 'collapsible', [ $this, 'render' ] );
-		add_shortcode( 'tboot_accordion_section', [ $this, 'render' ] );
+	public static function register_shortcode() {
+		WP::add_shortcode( 'collapsible', [ __CLASS__, 'render' ] );
+		WP::add_shortcode( 'tboot_accordion_section', [ __CLASS__, 'render' ] );
 	}
 
 	/**
 	 * Sets up the variables used by the render function.
+	 *
+	 * @param array  $atts Shortcode params.
+	 * @param string $content Shortcode content.
+	 * @return array Parameters to pass to the get_html method.
 	 */
-	public function set_up() {
-		$this->atts = shortcode_atts( $this->defaults, $this->atts );
-
+	public static function get_template_params(
+		array $atts = [],
+		string $content = ''
+	) : array {
 		// Support for previous version of the shortcode.
-		if ( isset( $this->atts['title'] ) ) {
-			$this->atts['trigger'] = $this->atts['title'];
+		if ( isset( $atts['title'] ) ) {
+			$atts['trigger'] = $atts['title'];
 		}
 
-		$this->pressed = 'true' === $this->atts['open'] || '1' === $this->atts['open']
-			? 'true'
-			: 'false';
-		$this->hidden = 'true' === $this->pressed ? 'false' : 'true';
-		$this->trigger = esc_attr( $this->atts['trigger'] );
-		$this->content = apply_filters( 'the_content', $this->content );
+		$pressed = in_array( $atts['open'], [ 'true', '1' ], true );
+
+		return [
+			'pressed' => $pressed ? 'true' : 'false',
+			'hidden' => $pressed ? 'false' : 'true',
+			'trigger' => WP::esc_attr( $atts['trigger'] ),
+			'content' => WP::apply_filters( 'the_content', $content ),
+		];
+	}
+
+	/**
+	 * Renders the HTML for the shortcode.
+	 *
+	 * @param array $atts The shortcode attributes.
+	 * @return string The HTML output.
+	 */
+	public static function get_html( array $atts = [] ) : string {
+		$atts = array_merge(
+			[
+				'pressed' => false,
+				'hidden' => true,
+				'trigger' => '',
+				'content' => '',
+
+			],
+			$atts
+		);
+
+		if ( empty( $atts['trigger'] ) || empty( $atts['content'] ) ) {
+			return '';
+		}
+
+		return "
+			<div class=\"collapsible\" data-collapsible>
+				<button class=\"collapsible-heading btn primary\" aria-pressed=\"$atts[pressed]\">
+					$atts[trigger]
+				</button>
+				<div class=\"collapsible-panel\" aria-hidden=\"$atts[hidden]\">
+					$atts[content]
+				</div>
+			</div>";
 	}
 
 	/**
@@ -63,24 +105,15 @@ class CollapsibleShortcode {
 	 * @param string $content Shortcode content.
 	 * @return string Rendered shortcode.
 	 */
-	public function render( $atts = [], $content = '' ) {
-		$this->atts = $atts;
-		$this->content = $content;
-		$this->set_up();
+	public static function render( $atts = [], $content = '' ) {
+		$atts = WP::shortcode_atts( self::$defaults, $atts );
 
-		if ( empty( $this->atts['trigger'] ) || empty( $this->content ) ) {
-			return '';
+		if ( empty( $atts['trigger'] ) ) {
+			$atts['trigger'] = $atts['title'];
 		}
 
-		return "
-			<div class=\"collapsible\" data-collapsible>
-				<button class=\"collapsible-heading btn primary\" aria-pressed=\"$this->pressed\">
-					$this->trigger
-				</button>
-				<div class=\"collapsible-panel\" aria-hidden=\"$this->hidden\">
-					$this->content
-				</div>
-			</div>
-		";
+		$params = self::get_template_params( $atts, $content );
+
+		return self::get_html( $params );
 	}
 }

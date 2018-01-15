@@ -7,6 +7,10 @@
 
 namespace ColbyComms\Collapsible;
 
+use Carbon_Fields\Helper\Helper;
+
+use ColbyComms\Collapsible\WpFunctions as WP;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
@@ -19,19 +23,19 @@ class Plugin {
 	 * Adds hooks.
 	 */
 	public function __construct() {
-		add_action( 'init', [ $this, 'remove_tboot_shortcodes' ] );
-		add_action( 'init', [ $this, 'register_container_shortcodes' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'register_script_and_style' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'maybe_enqueue_script' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'maybe_enqueue_style' ] );
+		WP::add_action( 'init', [ __CLASS__, 'remove_tboot_shortcodes' ] );
+		WP::add_action( 'init', [ __CLASS__, 'register_container_shortcodes' ] );
+		WP::add_action( 'wp_enqueue_scripts', [ __CLASS__, 'register_script_and_style' ] );
+		WP::add_action( 'wp_enqueue_scripts', [ __CLASS__, 'maybe_enqueue_script' ] );
+		WP::add_action( 'wp_enqueue_scripts', [ __CLASS__, 'maybe_enqueue_style' ] );
 	}
 
 	/**
 	 * Handles legacy shortcodes that no longer do anything.
 	 */
-	public function register_container_shortcodes() {
-		add_shortcode( 'tboot_accordion', [ $this, 'render_collapsible_container' ] );
-		add_shortcode( 'collapsible-container', [ $this, 'render_collapsible_container' ] );
+	public static function register_container_shortcodes() {
+		WP::add_shortcode( 'tboot_accordion', [ __CLASS__, 'render_collapsible_container' ] );
+		WP::add_shortcode( 'collapsible-container', [ __CLASS__, 'render_collapsible_container' ] );
 	}
 
 	/**
@@ -41,62 +45,106 @@ class Plugin {
 	 * @param string $content The shortcode content.
 	 * @return string
 	 */
-	public function render_collapsible_container( $_, $content = '' ) {
-		return apply_filters( 'the_content', $content );
+	public static function render_collapsible_container( $_, $content = '' ) {
+		return WP::apply_filters( 'the_content', $content );
 	}
 
 	/**
 	 * Registers the plugin's script.
 	 */
-	public function register_script_and_style() {
-		$root_url = plugin_dir_url( dirname( __DIR__ ) . '/index.php' );
+	public static function register_script_and_style() {
+		$root_url = WP::plugin_dir_url( dirname( __DIR__ ) . '/index.php' );
 
+		// If the root dir wasn't found, the plugin was probably installed via Composer in a theme.
 		if ( ! file_exists( $root_url ) && function_exists( 'get_template_directory_uri' ) ) {
-			$root_url = get_template_directory_uri() . '/vendor/colbycomms/wp-collapsible/';
+			$root_url = WP::get_template_directory_uri() . '/vendor/colbycomms/wp-collapsible/';
 		}
 
 		$dist = "{$root_url}dist";
 
-		wp_register_script( 'colbycomms/collapsible', "$dist/index.js", [], '', true );
-		wp_register_style( 'colbycomms/collapsible', "$dist/colby-wp-collapsible.css", [], '' );
+		WP::wp_register_script(
+			TEXT_DOMAIN,
+			"$dist/index.js",
+			[],
+			VERSION,
+			true
+		);
+
+		WP::wp_register_style(
+			TEXT_DOMAIN,
+			"$dist/colby-wp-collapsible.css",
+			[],
+			VERSION
+		);
 	}
 
 	/**
 	 * Enqueues the script if the shortcode exists on the page.
 	 */
-	public function maybe_enqueue_script() {
+	public static function maybe_enqueue_script() {
 		global $post;
 
-		if ( has_shortcode( $post->post_content, 'tboot_accordion_section' )
-				|| has_shortcode( $post->post_content, 'collapsible' )
-				&& apply_filters( 'colbycomms_collapsible__enqueue_script', true ) ) {
-			wp_enqueue_script( 'colbycomms/collapsible' );
+		if ( empty( $post ) ) {
+			return;
+		}
+
+		/**
+		 * Filters whether to enqueue this plugin's script.
+		 *
+		 * @param bool Yes or no.
+		 */
+		$do_script = WP::apply_filters( 'colbycomms_collapsible__enqueue_script', true );
+
+		if ( ! $do_script ) {
+			return;
+		}
+
+		if ( WP::has_shortcode( $post->post_content, 'tboot_accordion_section' )
+				|| WP::has_shortcode( $post->post_content, 'collapsible' ) ) {
+			WP::wp_enqueue_script( TEXT_DOMAIN );
 		}
 	}
 
 	/**
 	 * Enqueues the style if the shortcode xists on the page and the option is set to true.
 	 */
-	public function maybe_enqueue_style() {
+	public static function maybe_enqueue_style() {
 		global $post;
 
-		if ( ( ! has_shortcode( $post->post_content, 'tboot_accordion_section' )
-				&& ! has_shortcode( $post->post_content, 'collapsible' ) )
-				|| ! apply_filters( 'colbycomms_collapsible__enqueue_style', true ) ) {
+		if ( empty( $post ) ) {
 			return;
 		}
 
-		if ( ! carbon_get_theme_option( 'wp_collapsible_use_styles' ) ) {
+		/**
+		 * Filters whether to enqueue this plugin's stylesheet.
+		 *
+		 * @param bool Yes or no.
+		 */
+		$do_style = WP::apply_filters( 'colbycomms_collapsible__enqueue_style', true );
+
+		if ( ! $do_style ) {
 			return;
 		}
 
-		wp_enqueue_style( 'colbycomms/collapsible' );
+		if ( ! WP::has_shortcode( $post->post_content, 'tboot_accordion_section' )
+				&& ! WP::has_shortcode( $post->post_content, 'collapsible' ) ) {
+			return;
+		}
+
+		if ( ! Helper::get_theme_option( 'wp_collapsible_use_styles' ) ) {
+			return;
+		}
+
+		WP::wp_enqueue_style( TEXT_DOMAIN );
 	}
 
 	/**
 	 * Removes shortcodes created by a legacy Colby product.
 	 */
-	public function remove_tboot_shortcodes() {
-		array_map( 'remove_shortcode', [ 'tboot_accordion', 'tboot_accordion_section' ] );
+	public static function remove_tboot_shortcodes() {
+		array_map(
+			[ __NAMESPACE__ . '\WpFunctions', 'remove_shortcode' ],
+			[ 'tboot_accordion', 'tboot_accordion_section' ]
+		);
 	}
 }

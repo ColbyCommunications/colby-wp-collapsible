@@ -1,17 +1,30 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+
 use ColbyComms\Collapsible\CollapsibleShortcode;
 
 class CollapsibleShortcodeTest extends TestCase {
-	public function test_hooks_added() {
-		$shortcode = new CollapsibleShortcode();
-		$this->assertEquals( 10, has_action( 'init', [ $shortcode, 'register_shortcode' ] ) );
+	public function test_render() {
+		$output = "
+			<div class=\"collapsible\" data-collapsible>
+				<button class=\"collapsible-heading btn primary\" aria-pressed=\"false\">
+					Trigger
+				</button>
+				<div class=\"collapsible-panel\" aria-hidden=\"true\">
+					Content
+				</div>
+			</div>";
 
-		do_action( 'init' );
-		$this->assertTrue( shortcode_exists( 'collapsible' ) );
-
-		$this->assertEquals( '', do_shortcode( '[collapsible]' ) );
-		$this->assertEquals( '', do_shortcode( '[collapsible]lorem[/collapsible]' ) );
+		$this->assertEquals(
+			$output,
+			CollapsibleShortcode::render(
+				[
+					'open' => 'false',
+					'title' => 'Trigger',
+				],
+				'Content'
+			)
+		);
 	}
 }

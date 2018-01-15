@@ -9,7 +9,8 @@ namespace ColbyComms\Collapsible;
 
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
-use Carbon_Fields\Carbon_Fields;
+
+use ColbyComms\Collapsible\WpFunctions as WP;
 
 /**
  * Sets up an options page using Carbon Fields.
@@ -19,16 +20,8 @@ class OptionsPage {
 	 * Adds hooks.
 	 */
 	public function __construct() {
-		add_action( 'after_setup_theme', [ $this, 'init' ] );
-		add_action( 'carbon_fields_register_fields', [ $this, 'create_container' ] );
-		add_action( 'carbon_fields_register_fields', [ $this, 'add_plugin_options' ] );
-	}
-
-	/**
-	 * Ensures Carbon is booted.
-	 */
-	public function init() {
-		Carbon_Fields::boot();
+		WP::add_action( 'carbon_fields_register_fields', [ $this, 'create_container' ] );
+		WP::add_action( 'carbon_fields_register_fields', [ $this, 'add_plugin_options' ] );
 	}
 
 	/**
