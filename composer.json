@@ -21,6 +21,7 @@
     "johnpbloch/wordpress-core": "dev-master"
   },
   "require": {
+    "php" : "^7.1",
     "colbycomms/colby-svg": "dev-master",
     "htmlburger/carbon-fields": "*"
   },
