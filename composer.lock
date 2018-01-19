@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7dbffffb573d058f3a13ae76e0a63e3e",
+    "content-hash": "fa4d31c6fa2928d8d7cc42e9eb77471b",
     "packages": [
         {
             "name": "colbycomms/colby-svg",
@@ -1764,6 +1764,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.1"
+    },
     "platform-dev": []
 }
