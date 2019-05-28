@@ -1,7 +1,6 @@
 {
   "name": "colbycomms/wp-collapsible",
   "description": "A WordPress shortcode for collapsible HTML drawers.",
-  "type": "wordpress-plugin",
   "scripts": {
     "lint": "./vendor/bin/phpcs --extensions=php -s",
     "fix": "./vendor/bin/phpcbf --extensions=php -s",
